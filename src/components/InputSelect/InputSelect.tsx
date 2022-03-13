@@ -26,10 +26,13 @@ const InputSelect = ({
 }: InputSelectProps) => {
 	const [isOpened, setIsOpened] = useState(false);
 	const [content, setContent] = useState('Не выбрано');
+    const [ownValue, setOwnValue] = useState(value);
 
-	const optionClickHandler = (content: string, value: string) => {
-		setContent(content);
-		onChange(value);
+	const selectChangeHandler = (selectValue: string) => {
+        const targetOption = optionList.find(({ value }) => value === selectValue);
+		setContent(targetOption ? targetOption.title : '');
+		onChange(selectValue);
+        setOwnValue(selectValue);
 	};
 
 	const getOptionList = (options: IOption[]) => {
@@ -37,7 +40,6 @@ const InputSelect = ({
 			return <option
 				key={value}
 				value={value}
-				onClick={() => optionClickHandler(title, value)}
 				className={classes.option}>{title}</option>;
 		});
 	};
@@ -50,9 +52,9 @@ const InputSelect = ({
 				<GIcon title='drop-down' color='#000'/>
 			</div>
 			<select id={id}
-				value={value}
-				className={classes.input}
-				onChange={() => onChange(content)}>
+				value={ownValue}
+                onChange={e => selectChangeHandler(e.target.value)}
+				className={classes.input}>
 				{getOptionList(optionList)}
 			</select>
 		</div>
