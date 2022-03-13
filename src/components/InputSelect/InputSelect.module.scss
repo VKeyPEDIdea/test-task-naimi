@@ -1,0 +1,59 @@
+@import '/src/scss/vars.scss';
+
+.select {
+	transition: $st-trans;
+	position: relative;
+	min-width: 200px;
+	cursor: pointer;
+	margin-bottom: 8px;
+
+	&:hover {
+		.label {
+			color: $color-on-body;
+        }
+
+		.arrow {
+			color: $color-on-body;
+        }
+    }
+}
+
+.d_none {
+	display: none;
+}
+	
+.field {
+	display: block;
+	box-sizing: border-box;
+	transition: $st-trans;
+	background: $color-surface;
+	border: 1px solid $color-input-border;
+	border-radius: 4px;
+	line-height: 18px;
+	font-size: 14px;
+	color: $color-on-body;
+	padding: 10px 16px;
+}
+
+.arrow {
+	position: absolute;
+    height: 24px;
+	right: 4px;
+	top: 8px;
+}
+
+.option {
+	background: $color-surface;
+	font-size: 14px;
+	padding: 8px 12px;
+	color: $color-on-body;
+}
+
+.input {
+	cursor: pointer;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}

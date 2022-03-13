@@ -1,0 +1,18 @@
+@import '/src/scss/vars.scss';
+
+.row {
+    display: flex;
+    border-top: 1px solid $color-windswept-beach;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    width: 210px;
+    color: $color-smoked-pearl;
+}
+
+.content {
+    padding: 16px 14px;
+}
