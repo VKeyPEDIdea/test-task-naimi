@@ -6,6 +6,7 @@ interface InputTextProps {
         id: string;
     }
     value: string;
+    placeholder?: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -14,6 +15,7 @@ const InputText = ({
         id,
     },
     value,
+    placeholder,
     onChange,
 }: InputTextProps) => {
     return (
@@ -22,6 +24,7 @@ const InputText = ({
                 onChange={onChange}
                 type='text'
                 id={id}
+                placeholder={placeholder}
                 value={value}
                 className={classes.input}/>
         </div>
