@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import GIcon from '../GIcon';
 import classes from './InputSelect.module.scss';
 
@@ -13,7 +13,7 @@ interface InputSelectProps {
         value: string;
         optionList: IOption[];
     }
-    onChange: () => void;
+    onChange: (value: string) => void;
 }
 
 const InputSelect = ({
@@ -25,12 +25,11 @@ const InputSelect = ({
     onChange,
 }: InputSelectProps) => {
 	const [isOpened, setIsOpened] = useState(false);
-	const [selectValue, setSelectValue] = useState(value);
 	const [content, setContent] = useState('Не выбрано');
 
 	const optionClickHandler = (content: string, value: string) => {
 		setContent(content);
-		setSelectValue(value);
+		onChange(value);
 	};
 
 	const getOptionList = (options: IOption[]) => {
@@ -43,18 +42,17 @@ const InputSelect = ({
 		});
 	};
 
-	return(
-		<div
-			className={classes.select}
+	return (
+		<div className={classes.select}
 			onClick={() => setIsOpened(!isOpened)}>
 			<div className={classes.field}>{content}</div>
 			<div className={classes.arrow} style={isOpened ? {transform: 'rotate(180deg)'} : {}}>
 				<GIcon title='drop-down' color='#000'/>
 			</div>
 			<select id={id}
-				value={selectValue}
+				value={value}
 				className={classes.input}
-				onChange={onChange}>
+				onChange={() => onChange(content)}>
 				{getOptionList(optionList)}
 			</select>
 		</div>
