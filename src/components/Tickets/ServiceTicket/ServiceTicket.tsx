@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputCheckbox from "../../InputCheckbox";
 import InputSelect from "../../InputSelect";
 import InputText from "../../InputText";
 import InputTextArea from "../../InputTextArea";
@@ -57,6 +58,9 @@ const ServiceTicket = () => {
     const [connection, setConnection] = useState('');
     const [units, setUnits] = useState('');
     const [moneyAmount, setMoneyAmount] = useState('');
+    const [personConfirm, setPersonConfirm] = useState(false);
+    const [photo, setPhoto] = useState(false);
+    const [review, setReview] = useState(false);
 
     const onCityChange = (value: string) => {
         setCity(value);
@@ -76,6 +80,18 @@ const ServiceTicket = () => {
 
     const onMoneyAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMoneyAmount(e.target.value);
+    };
+
+    const onPersonConfirmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPersonConfirm(e.target.checked);
+    };
+
+    const onPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPhoto(e.target.checked);
+    };
+
+    const onReviewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setReview(e.target.checked);
     };
 
     return (
@@ -103,6 +119,13 @@ const ServiceTicket = () => {
                     <InputSelect data={unitsSelect}
                         value={units}
                         onChange={onUnitsChange}/>
+                </div>
+            </Row>
+            <Row title='Требования к специалистам:'>
+                <div className='col-3'>
+                    <InputCheckbox label='Личность подтверждена' onChange={onPersonConfirmChange}/>
+                    <InputCheckbox label='С фото работ в анкете' onChange={onPhotoChange}/>
+                    <InputCheckbox label='С отзывами' onChange={onReviewChange}/>
                 </div>
             </Row>
         </div>

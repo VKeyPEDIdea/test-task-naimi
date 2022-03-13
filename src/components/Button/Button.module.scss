@@ -1,0 +1,22 @@
+@import '/src/scss/vars.scss';
+
+.btn {
+    background-color: transparent;
+    border: 1px solid $color-primary;
+    border-radius: 4px;
+    padding: 8px 16px;
+    color: $color-primary;
+    font-size: 16px;
+    cursor: pointer;
+    transition: $st-trans;
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-surface;
+    }
+}
+
+.active {
+    background-color: $color-primary;
+    color: $color-surface;
+}
