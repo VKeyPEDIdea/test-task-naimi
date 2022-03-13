@@ -10,18 +10,18 @@ interface IOption {
 interface InputSelectProps {
     data: {
         id: string;
-        value: string;
         optionList: IOption[];
     }
+    value: string;
     onChange: (value: string) => void;
 }
 
 const InputSelect = ({
     data: {
         id,
-        value,
         optionList,
     },
+    value,
     onChange,
 }: InputSelectProps) => {
 	const [isOpened, setIsOpened] = useState(false);
